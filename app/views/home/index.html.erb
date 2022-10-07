@@ -1,39 +1,32 @@
+<div class="container text-center" style="
+    margin-right: 100px;
+    margin-left: 100px;
+">
+    <div class="row row-cols-4" style="
+    width: 1600px;
+">
 <% @cars.each do |car|%>
-<% if user_signed_in?%>
+    <div class="col">
 
-<%= link_to "View Car", car_path(car) %>
+      <% if car.images.attached?  %>
+        <div class="col align-self-start">
+         <%= image_tag car.images.first, width: "300px", height: "210px"%>
+        </div>
+      <% else %>
+        <p>Please insert images</p>
+      <% end %>
 
-<div class="field">
-<p>manufacturing Year: <%= car.manufacture_year %></p> 
-</div>
+      <p>Brand: <%= car.brand%></p>
+      <p>Model: <%= car.model%> </p> 
 
-<div class="field">
-<p>Fuel Variant: <%= car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p> 
-</div>
+      <% if user_signed_in?%>
 
+      <p><%= link_to "View Car", car_path(car) %></p>
+
+
+      <% end %>
+    </div>
 <% end %>
-
+  </div>
 </div>
-<p>Brand: <%= car.brand%></p>
-<div>
-
-</div>
-<p>Model: <%= car.model%></p>
-<div>
-
-<div class="field">
-<p>Price: <%= car.price %></p> 
-</div>
-
-<div>
-  <% if car.images.attached?  %>
-  <%= image_tag car.images.first %>
-  <% else %>
-    <p>Please insert images</p>
-  <% end %> 
-</div>
-
-<hr>
-
-<% end %>
 

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/my_cars', to: 'cars#user_cars'
 
   resources :reviews, only: [:index]
-  resources :cars, only: [:show]
+  resources :cars, only: [:show, :new, :edit]
 
   resources :cars do
       resources :reviews
