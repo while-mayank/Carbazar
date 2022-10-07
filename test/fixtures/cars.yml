@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  price: 1
+  manufacture_year: 2022-10-03
+  fuel_type: MyString
+  user: one
+
+two:
+  brand: MyString
+  model: MyString
+  price: 1
+  manufacture_year: 2022-10-03
+  fuel_type: MyString
+  user: two

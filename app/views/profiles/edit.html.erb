@@ -1,0 +1,36 @@
+<%= form_for @profile do |profile|%>
+<%= profile.label :first_name%>: 
+<%= profile.text_field :first_name%><br>
+<%= profile.label :last_name%>:
+<%= profile.text_field :last_name%><br>
+<%= profile.label :gender%>:
+<%= profile.text_field :gender%>
+<br>
+<%= profile.label :age%>:
+<%= profile.number_field :age%>
+<br>
+<%= profile.label :house_no%>:
+<%= profile.text_field :house_no%>
+<br>
+<%= profile.label :street%>:
+<%= profile.text_field :street%>
+<br>
+<%= profile.label :city%>:
+<%= profile.text_field :city%>
+<br>
+<%= profile.label :state%>:
+<%= profile.text_field :state%>
+<br>
+<%= profile.label :country%>:
+<%= profile.text_field :country%>
+<br>
+<%= profile.label :zip_code%>:
+<%= profile.text_field :zip_code%>
+<br>
+<%= profile.label :avatar %>
+<%= profile.file_field :avatar %>
+<br>
+
+<%= profile.submit "Update"%>
+<br>
+<%end%>

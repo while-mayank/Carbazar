@@ -1,0 +1,27 @@
+<% @cars.each do |car|%>
+</div>
+<p>Brand: <%= car.brand%></p>
+<div>
+
+<div class="field">
+<p>Model: <%= car.model %></p> 
+</div>
+
+<div class="field">
+<p>Price: <%= car.price %></p> 
+</div>
+
+<div class="field">
+<p>manufacturing Year: <%= car.manufacture_year %></p> 
+</div>
+
+<div class="field">
+<p>Fuel Variant: <%= car.fuel_type %></p> 
+</div>
+
+<%= link_to "View Car", car_path(car) %>
+
+<hr>
+
+<% end %>
+

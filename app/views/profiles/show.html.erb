@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @profile.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <strong>House Number:</strong>
+  <%= @profile.house_no %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @profile.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @profile.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @profile.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @profile.country %>
+</p>
+
+<p>
+  <strong>Zip Code:</strong>
+  <%= @profile.zip_code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<% if @profile.avatar.attached?  %>
+<p>
+  <strong>Avatar:</strong>
+   <%= image_tag @profile.avatar %>
+</p>
+<% else %>
+  <p> Dont have any profile picture. </p>
+<% end %>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %><br>
+<%= link_to 'Delete', profile_path(@profile), method: :delete %><br>
+<%= link_to 'Back', home_index_path %><br>

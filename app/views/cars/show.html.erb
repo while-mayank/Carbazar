@@ -1,0 +1,53 @@
+</div>
+<p>Company: <%= @car.brand%> </p>
+<div>
+
+<div class="field">
+  <p>Model: <%= @car.model %></p>
+  
+</div>
+
+<div class="field">
+  <p>Price: <%= @car.price %></p>
+</div>
+
+<div class="field">
+  <p>manufacture Year: <%= @car.manufacture_year %></p>
+</div>
+
+<div>
+  <p>Fuel Type: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
+</div>
+
+<div>
+  <% if @car.images.attached?  %>
+  <% @car.images.each do |image| %>
+  <%= image_tag image %>
+    <% end %> 
+  <% else %>
+    <p>Please insert images</p>
+  <% end %> 
+</div>
+
+<div>
+  <%= link_to "Add Like", likes_path(car_id: @car.id), :method => :post %>
+  <%= link_to "Dislike", likes_path(car_id: @car.id,like_id:@like),:method => :delete %>
+  <em><%= @car.likes.count%></em><br>  
+</div>
+
+<ul>
+  <li><%= link_to "Edit", edit_car_path(@car) %></li>
+  <li><%= link_to "Destroy", car_path(@car),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
+</ul>
+<h2>Reviews</h2>
+<%= render 'reviews/reviews'  %>
+
+
+<h2>Add a review:</h2>
+<%= render "reviews/form" %>
+
+<h2>Do you have any enquiries?</h2>
+<%= link_to "Inquiry" ,new_inquiry_path %>
+

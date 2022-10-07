@@ -1,0 +1,17 @@
+<% @car.reviews.each do |review|%>
+<p>
+  <strong>Comment:</strong>
+  <%= review.description%>
+</p>
+
+<div>
+  <%= link_to "Add Like", likes_path(review_id: review.id), :method => :post %>
+  <%= link_to "Dislike", likes_path(review_id: review.id, like_id:@like),:method => :delete %>
+  <em><%= review.likes.count%></em><br>  
+</div>
+
+<p>
+  <%= link_to "Destroy Comment", [review.car, review],
+    method: :delete, data: {confirm: "Are you sure? "} %> 
+</p>
+<% end %>
