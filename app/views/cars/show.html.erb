@@ -1,3 +1,7 @@
+<div>
+  <p> <em> Seller: <%= @car.user.user_name %> </em></p>
+</div>
+
 </div>
 <p>Company: <%= @car.brand%> </p>
 <div>
@@ -35,12 +39,14 @@
   <em><%= @car.likes.count%></em><br>  
 </div>
 
+<% if current_user.id == @car.user_id%>
 <ul>
   <li><%= link_to "Edit", edit_car_path(@car) %></li>
   <li><%= link_to "Destroy", car_path(@car),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
+<% end %>
 <h2>Reviews</h2>
 <%= render 'reviews/reviews'  %>
 
