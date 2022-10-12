@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_one :profile, :dependent => :destroy
-  has_many :inquiries
   has_many :cars
 
   after_create :set_profile

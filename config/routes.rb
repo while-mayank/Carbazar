@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'inquiries/index'
   devise_for :users
-  root to: "home#index"
+  root to: "cars#index"
 
   get 'home/index'
   get '/my_cars', to: 'cars#user_cars'

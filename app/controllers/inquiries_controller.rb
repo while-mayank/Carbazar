@@ -13,14 +13,14 @@ end
 
 def create
 
-  if @inquiry = current_user.inquiries.create(inquiry_params)
+  if @inquiry = Inquiry.create(inquiry_params)
     redirect_to action: "index" , notice: "inquiry was successfully created."
   end
 end
 
 private
 def inquiry_params
-  params.require(:inquiry).permit(:content, :number)
+  params.require(:inquiry).permit(:content, :number, :car_id)
 end
 
 def set_inquiry
