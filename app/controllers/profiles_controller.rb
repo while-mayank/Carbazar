@@ -3,24 +3,6 @@ before_action :authenticate_user!, except: %i[index]
 before_action :set_profile, only: %i[show edit update destroy]
 
 
-def index
-@profile = Profile.all
-end
-
-def new
-	@profile = Profile.new
-end
-
-def create
-	@profile = current_user.build_profile(profile_params)
-
-	if @profile.save
-		redirect_to profile_url(@profile), notice: "Profile was successfully created."
-	else
-		render :new
-	end
-end
-
 def edit
 end
 
