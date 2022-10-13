@@ -15,9 +15,10 @@
   <em><%= review.likes.count%></em><br>  
 </div>
 
-
+<% if current_user.id == review.user_id %>
 <p>
-  <%= link_to "Destroy Review", [review.car, review],
+  <%= link_to "Remove Review", [review.car, review],
     method: :delete, data: {confirm: "Are you sure? "} %> 
 </p>
+<% end %>
 <% end %>

@@ -20,13 +20,15 @@
 </div>
 
 <div>
-  <p>Fuel Type: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
+  <p>Fuel Variant: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
 </div>
 
 <div>
   <% if @car.images.attached?  %>
-  <% @car.images.each do |image| %>
-  <%= image_tag image %>
+    <% @car.images.each do |image| %>
+      <div class="col align-self-start">
+         <%= image_tag image, width: "300px", height: "210px"%>
+      </div>
     <% end %> 
   <% else %>
     <p>Please insert images</p>

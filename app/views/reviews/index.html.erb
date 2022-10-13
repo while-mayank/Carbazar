@@ -1,0 +1,7 @@
+<h1> Your Reviews </h1>
+<% @reviews.each do |review|%>
+<p>Model Name: <%= review.car.model%></p>
+<p>Description: <%= review.description %></p>
+<hr>
+<% end  %>
+

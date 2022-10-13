@@ -2,9 +2,12 @@ class ReviewsController < ApplicationController
 	before_action :authenticate_user!
 before_action :set_review, only: %i[update destroy]
 
+def index
+	@reviews = Review.where(user_id: current_user.id)
+end
 
 def create
-	if @review = Review.create(review_params)
+	if @review = current_user.reviews.create(review_params)
 		@car  = @review.car
 		redirect_to car_url(@car), notice: "review was successfully created."
 	else

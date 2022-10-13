@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   validates :user_name, :mobile, presence: true
   has_many :likes
-
+  has_many :reviews
   has_one :profile, :dependent => :destroy
   has_many :cars
 
