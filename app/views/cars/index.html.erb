@@ -1,4 +1,8 @@
-
+<% if user_signed_in? %>
+<div>
+  <%= select_tag :brand, options_for_select([ 'Mahindra', 'Tata', 'Force','Honda', 'Hyundai', 'Kia', "MG" ], params[:brand]) , :onchange => "window.location.replace('/'+'brand'+'/'+this.value);", prompt: "Select  brand"  %>
+</div>
+<% end %>
 <div class="container text-center" style="
     margin-right: 100px;
     margin-left: 100px;
@@ -18,7 +22,8 @@
       <% end %>
 
       <p>Brand: <%= car.brand%></p>
-      <p>Model: <%= car.model%> </p> 
+      <p>Model: <%= car.model%> </p>
+      <p>Price: <%= car.price%> </p> 
 
       <% if user_signed_in?%>
 
