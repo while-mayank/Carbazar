@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
 before_action :authenticate_user! , except: %i[index]
 before_action :set_car, only: %i[show edit update destroy]
-
+before_action :correct_user, only: [:edit, :update]
 
 def index
 	if params[:brand]
@@ -55,6 +55,12 @@ end
 
 def set_car
 	@car = Car.find(params[:id])
+end
+
+def correct_user
+	@car = Car.find(params[:id])
+	@user = @car.user
+	redirect_to root_path unless current_user == @user
 end
 
 end
