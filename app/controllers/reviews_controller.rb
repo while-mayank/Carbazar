@@ -1,11 +1,7 @@
 class ReviewsController < ApplicationController
 	before_action :authenticate_user!
-before_action :set_review, only: %i[show edit update destroy]
+before_action :set_review, only: %i[update destroy]
 
-
-def index
-	@review = Review.all
-end
 
 def create
 	if @review = Review.create(review_params)

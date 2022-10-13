@@ -17,9 +17,6 @@ def user_cars
 	@cars = current_user.cars
 end
 
-def buy_cars
-end
-
 def new
 	@car = Car.new
 end
