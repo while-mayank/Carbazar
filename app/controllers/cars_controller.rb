@@ -25,7 +25,8 @@ def new
 end
 
 def create
-	if @car = current_user.cars.create(car_params)
+	@car = current_user.cars.create(car_params)
+	if @car.save
 		redirect_to car_url(@car), notice: "car was successfully created."
 	else
 		render :new

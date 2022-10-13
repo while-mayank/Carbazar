@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get '/my_cars', to: 'cars#user_cars'
-  get '/brand1/:brand', to: 'cars#index'
+  get '/brand/:brand', to: 'cars#index'
 
   resources :reviews, only: [:index]
   resources :cars, only: [:show, :new, :edit]
