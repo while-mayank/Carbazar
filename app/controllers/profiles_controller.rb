@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
-before_action :authenticate_user!, except: %i[index]
-before_action :set_profile, only: %i[show edit update destroy]
+before_action :authenticate_user!
+before_action :set_profile, only: %i[edit update destroy show]
 
+
+def show
+end
 
 def edit
 end

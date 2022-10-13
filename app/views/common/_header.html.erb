@@ -4,9 +4,11 @@
       <%if user_signed_in?%>
       <%= current_user.user_name%>
       </a>
+      <% if current_user.profile.avatar.present?%>
       <a class="navbar-brand" href="#">
         <%= image_tag  current_user.profile.avatar, width: "30px", height: "30px"%>
       </a>
+      <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

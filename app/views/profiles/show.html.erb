@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
 <p>
   <strong>First Name:</strong>
   <%= @profile.first_name %>
@@ -48,11 +48,6 @@
 <p>
   <strong>Zip Code:</strong>
   <%= @profile.zip_code %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
 </p>
 
 <% if @profile.avatar.attached?  %>

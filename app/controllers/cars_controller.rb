@@ -1,14 +1,20 @@
 class CarsController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_user! , except: %i[index]
 before_action :set_car, only: %i[show edit update destroy]
 
 
 def index
-@cars = Car.all
+	if params[:brand]
+		@cars = Car.where(brand: params[:brand]).where.not(user_id: current_user.id)
+	elsif current_user
+		@cars = Car.where.not(user_id: current_user.id)
+	else
+		@cars = Car.all
+	end
 end
 
 def user_cars
-@cars = current_user.cars
+	@cars = current_user.cars
 end
 
 def buy_cars
