@@ -34,8 +34,13 @@
 </div>
 
 <div>
-  <%= link_to "Add Like", likes_path(car_id: @car.id), :method => :post %>
-  <%= link_to "Dislike", likes_path(car_id: @car.id,like_id:@like),:method => :delete %>
+  <% if Like.where(user: current_user.id).where(likeable_id: @car.id).present? %>
+  <p>👍 
+  <%= link_to "👎", likes_path(car_id: @car.id,like_id:@like),:method => :delete %> </p>
+  <% else %>
+  <p><%= link_to "👍", likes_path(car_id: @car.id), :method => :post %>
+   👎</p>
+  <% end %>
   <em><%= @car.likes.count%></em><br>  
 </div>
 

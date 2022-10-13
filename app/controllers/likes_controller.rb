@@ -2,14 +2,14 @@ class LikesController < ApplicationController
 	def create
 		if params[:car_id]
 			@car = Car.find(params[:car_id])
-			@car.likes.create
+			@car.likes.create(user: current_user)
 			if @car.save
 				redirect_to @car
 			end
 		else
 			@review = Review.find(params[:review_id])
 			@car = @review[:car_id]
-			@review.likes.create
+			@review.likes.create(user: current_user)
 			if @review.save
 				redirect_to "http://localhost:3000/cars/#{@car}"
 			end
@@ -31,5 +31,4 @@ class LikesController < ApplicationController
 		end
 
 	end
-
 end

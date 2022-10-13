@@ -5,10 +5,16 @@
 </p>
 
 <div>
-  <%= link_to "Add Like", likes_path(review_id: review.id), :method => :post %>
-  <%= link_to "Dislike", likes_path(review_id: review.id, like_id:@like),:method => :delete %>
+  <% if Like.where(user: current_user.id).where(likeable_id: review.id).present? %>
+  <p>👍 
+  <%= link_to "👎", likes_path(review_id: review.id, like_id:@like),:method => :delete %> </p>
+  <% else %>
+  <p><%= link_to "👍", likes_path(review_id: review.id), :method => :post %>
+   👎</p>
+  <% end %>
   <em><%= review.likes.count%></em><br>  
 </div>
+
 
 <p>
   <%= link_to "Destroy Review", [review.car, review],
