@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-<div>
-  <%= select_tag :brand, options_for_select([ 'Mahindra', 'Tata', 'Force','Honda', 'Hyundai', 'Kia', "MG" ], params[:brand]) , :onchange => "window.location.replace('/'+'brand'+'/'+this.value);", prompt: "Select  brand"  %>
+<div class="dropdown">
+  <%= select_tag :brand, options_for_select([ 'Mahindra', 'Tata', 'Force','Honda', 'Hyundai', 'Kia', "MG" ], params[:brand]) , :onchange => "window.location.replace('/'+'brand'+'/'+this.value);", prompt: "Select  brand", class: "btn btn-danger btn-sm dropdown-toggle"%>
 </div>
 <% end %>
 <div class="container text-center" style="
@@ -11,26 +11,24 @@
     width: 1600px;
 ">
 <% @cars.each do |car|%>
-    <div class="col">
-
+    <div class="col" style="margin-bottom: 20px; margin-top: 20px;">
+      <div class="card text-bg-light mb-3" style="width: 18rem;">
       <% if car.images.attached?  %>
-        <div class="col align-self-start">
-         <%= image_tag car.images.first, width: "300px", height: "210px"%>
+        <div class="col align-self-start" style="width: 18rem;">
+         <%= image_tag car.images.first, width: "300px", height: "210px", class:"card-img-top"%>
         </div>
       <% else %>
         <p>Please insert images</p>
       <% end %>
-
-      <p>Brand: <%= car.brand%></p>
-      <p>Model: <%= car.model%> </p>
-      <p>Price: <%= car.price%> </p> 
-
+      <div class="card-body">
+      <p class="card-title">Brand: <%= car.brand%></p>
+      <p class="card-text">Model: <%= car.model%> </p>
+      <p class="card-text">Price: <%= car.price%> </p> 
       <% if user_signed_in?%>
-
-      <p><%= link_to "View Car", car_path(car) %></p>
-
-
+          <p><%= link_to "View Car", car_path(car), class: "btn btn-success" %></p>
       <% end %>
+        </div>
+      </div>
     </div>
 <% end %>
   </div>

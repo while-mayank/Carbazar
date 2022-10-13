@@ -10,7 +10,7 @@
     </ul>
   </div>
 <% end %> 
-  </div>
+  </div class="form-check>
   <%= form.label :brand%>
   <%= form.select :brand, ['Tata', 'Mahindra','Force','Honda', 'Hyundai', 'Kia', 'MG']%><br>
   <div>
@@ -30,10 +30,10 @@
     <%= form.select :manufacture_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
   </div>
 
-  <div>
+  <div class="form-check>
     <%   %i[petrol diesel hydrogen alcohol cng].each do |key| %>
     <%= form.check_box :fuel_type, {multiple: true}, key, nil%>
-    <%= form.label key%>
+    <%= form.label key %>
     <% end %>
   </div>
   
