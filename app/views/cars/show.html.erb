@@ -37,7 +37,8 @@
 
 <div>
   <% if Like.where(user: current_user.id, likeable_id: @car.id).present? == true %>
-  <p>👍 
+  
+  <p>👍
   <%= link_to "👎", likes_path(car_id: @car.id,like_id:@like),:method => :delete %> </p>
   <% elsif  Like.where(user: current_user.id, likeable_id: @car.id).present? == false%>
   <p><%= link_to "👍", likes_path(car_id: @car.id), :method => :post %>

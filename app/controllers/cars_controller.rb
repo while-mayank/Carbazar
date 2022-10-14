@@ -4,7 +4,7 @@ before_action :set_car, only: %i[show edit update destroy]
 before_action :correct_user, only: [:edit, :update]
 
 def index
-	@cars = Car.all
+	@cars = Car.all.order(:model)
 end
 
 def user_cars
@@ -13,11 +13,11 @@ end
 
 def buy_cars
 	if params[:brand]
-		@cars = Car.where(brand: params[:brand]).where.not(user_id: current_user.id)
+		@cars = Car.where(brand: params[:brand]).where.not(user_id: current_user.id).order(:model)
 	elsif current_user
-		@cars = Car.where.not(user_id: current_user.id)
+		@cars = Car.where.not(user_id: current_user.id).order(:model)
 	else
-		@cars = Car.all
+		@cars = Car.all.order(:model)
 	end
 end
 
