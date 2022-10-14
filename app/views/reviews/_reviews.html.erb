@@ -4,16 +4,22 @@
   <%= review.description%>
 </p>
 
-<div>
-  <% if Like.where(user: current_user.id).where(likeable_id: review.id).present? %>
-  <p>👍 
-  <%= link_to "👎", likes_path(review_id: review.id, like_id:@like),:method => :delete %> </p>
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+  <% if Like.where(user: current_user.id, likeable_id: review.id, like_type: true).present?%>
+  <%= link_to "👍🏻", likes_path(review_id: review.id, like_type: true), method: :delete, class: "btn btn-secondary"%>
   <% else %>
-  <p><%= link_to "👍", likes_path(review_id: review.id), :method => :post %>
-   👎</p>
+  <%= link_to "👍🏻", likes_path(review_id: review.id, like_type: true), method: :post, class: "btn btn-outline-secondary"%>
   <% end %>
-  <em><%= review.likes.count%></em><br>  
 </div>
+<em>likes Count<%= review.likes.where(like_type: true).count %></em><br> 
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+  <% if Like.where(user: current_user.id, likeable_id: review.id, like_type: false).present?%>
+  <%= link_to "👎🏻", likes_path(review_id: review.id, like_type: false), method: :delete, class: "btn btn-secondary"%>
+  <% else %>
+  <%= link_to "👎🏻", likes_path(review_id: review.id, like_type: false), method: :post, class: "btn btn-outline-secondary"%>
+  <% end %>
+</div>
+<em>Unlikes Count<%= review.likes.where(like_type: false).count %></em><br> 
 
 <% if current_user.id == review.user_id %>
 <p>

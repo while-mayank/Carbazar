@@ -2,10 +2,12 @@
 
 one:
   user: one
+  like_type: false
   likeable: one
   likeable_type: Likeable
 
 two:
   user: two
+  like_type: false
   likeable: two
   likeable_type: Likeable

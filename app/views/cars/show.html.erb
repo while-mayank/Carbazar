@@ -35,20 +35,23 @@
   <% end %> 
 </div>
 
-<div>
-  <% if Like.where(user: current_user.id, likeable_id: @car.id).present? == true %>
-  
-  <p>👍
-  <%= link_to "👎", likes_path(car_id: @car.id,like_id:@like),:method => :delete %> </p>
-  <% elsif  Like.where(user: current_user.id, likeable_id: @car.id).present? == false%>
-  <p><%= link_to "👍", likes_path(car_id: @car.id), :method => :post %>
-   👎</p>
-   <% else %>
-   <%= link_to "👍", likes_path(car_id: @car.id), :method => :post %>
-   <%= link_to "👎", likes_path(car_id: @car.id,like_id:@like),:method => :delete %>
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+  <% if Like.where(user: current_user.id, likeable_id: @car.id, like_type: true).present?%>
+  <%= link_to "👍🏻", likes_path(car_id: @car.id, like_type: true), method: :delete, class: "btn btn-secondary"%>
+  <% else %>
+  <%= link_to "👍🏻", likes_path(car_id: @car.id, like_type: true), method: :post, class: "btn btn-outline-secondary"%>
   <% end %>
-  <em><%= @car.likes.count%></em><br>  
 </div>
+<em>likes Count<%= @car.likes.where(like_type: true).count %></em><br> 
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+  <% if Like.where(user: current_user.id, likeable_id: @car.id, like_type: false).present?%>
+  <%= link_to "👎🏻", likes_path(car_id: @car.id, like_type: false), method: :delete, class: "btn btn-secondary"%>
+  <% else %>
+  <%= link_to "👎🏻", likes_path(car_id: @car.id, like_type: false), method: :post, class: "btn btn-outline-secondary"%>
+  <% end %>
+</div>
+<em>Unlikes Count<%= @car.likes.where(like_type: false).count %></em><br> 
+
 
 <% if current_user.id == @car.user_id %>
 <ul>
