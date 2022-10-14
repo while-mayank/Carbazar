@@ -4,6 +4,14 @@ before_action :set_car, only: %i[show edit update destroy]
 before_action :correct_user, only: [:edit, :update]
 
 def index
+	@cars = Car.all
+end
+
+def user_cars
+	@cars = current_user.cars
+end
+
+def buy_cars
 	if params[:brand]
 		@cars = Car.where(brand: params[:brand]).where.not(user_id: current_user.id)
 	elsif current_user
@@ -11,10 +19,6 @@ def index
 	else
 		@cars = Car.all
 	end
-end
-
-def user_cars
-	@cars = current_user.cars
 end
 
 def new

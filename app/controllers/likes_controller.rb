@@ -30,6 +30,5 @@ class LikesController < ApplicationController
 			@car = @review.car
 			redirect_to @car
 		end
-
 	end
 end
