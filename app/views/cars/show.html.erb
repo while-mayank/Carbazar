@@ -1,29 +1,4 @@
 <div>
-  <p> <em> Seller: <%= @car.user.user_name %> </em></p>
-</div>
-
-</div>
-<p>Company: <%= @car.brand%> </p>
-<div>
-
-<div class="field">
-  <p>Model: <%= @car.model %></p>
-  
-</div>
-
-<div class="field">
-  <p>Price: <%= @car.price %></p>
-</div>
-
-<div class="field">
-  <p>manufacture Year: <%= @car.manufacture_year %></p>
-</div>
-
-<div>
-  <p>Fuel Variant: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
-</div>
-
-<div>
   <% if @car.images.attached?  %>
     <% @car.images.each do |image| %>
       <div class="col align-self-start">
@@ -34,6 +9,15 @@
     <p>Please insert images</p>
   <% end %> 
 </div>
+
+  <p> <em> Seller: <%= @car.user.user_name %> </em></p>
+  <p>Company: <%= @car.brand%> </p>
+  <p>Model: <%= @car.model %></p>
+  <p>Price: <%= @car.price %></p>
+  <p>manufacture Year: <%= @car.manufacture_year %></p>
+  <p>Fuel Variant: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
+</div>
+
 
 <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
   <% if Like.where(user: current_user.id, likeable_id: @car.id, like_type: true).present?%>
