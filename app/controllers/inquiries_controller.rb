@@ -3,7 +3,7 @@ before_action :authenticate_user!
 
 
 def index
-@inquiries = current_user.cars.all
+@cars = current_user.cars
 end
 
 def new

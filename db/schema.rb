@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_10_14_134148) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "manufacture_year", limit: 2
-    t.text "fuel_type", default: [], array: true
     t.bigint "user_id", null: false
+    t.string "fuel_type"
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 

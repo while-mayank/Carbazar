@@ -6,6 +6,7 @@ def index
 end
 
 def create
+	debugger
 	if @review = current_user.reviews.create(review_params)
 		@car  = @review.car
 		redirect_to car_url(@car), notice: "review was successfully created."

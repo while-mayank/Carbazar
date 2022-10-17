@@ -15,7 +15,8 @@
   <p>Model: <%= @car.model %></p>
   <p>Price: <%= @car.price %></p>
   <p>manufacture Year: <%= @car.manufacture_year %></p>
-  <p>Fuel Variant: <%= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p>
+  <p>Fuel Variant: <%= @car.fuel_type%></p>
+  <!-- <p>Fuel Variant: <%#= @car.fuel_type.map { |fuel_type| fuel_type.capitalize }.to_sentence %></p> -->
 </div>
 
 
@@ -52,6 +53,7 @@
 <h2>Add a review:</h2>
 <%= render "reviews/form" %>
 
+<% unless @car.user_id == current_user.id %>
 <h2>Do you have any enquiries?</h2>
 <%= link_to "Inquiry" ,new_inquiry_path(@car) %>
-
+<% end %>

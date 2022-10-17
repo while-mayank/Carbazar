@@ -31,10 +31,30 @@
   </div>
 
   <div class="form-check">
-    <%   %i[petrol diesel hydrogen alcohol cng].each do |key| %>
-    <%= form.check_box :fuel_type, {multiple: true}, key, nil%>
-    <%= form.label key %>
-    <% end %>
+    <%= form.label :fuel_type %> <br>
+
+    <%= form.label :fuel_type, "Petrol"%>
+    <%= form.radio_button :fuel_type, 'Petrol' %><br>
+
+    <%= form.label :fuel_type,  "Diesel"%>
+    <%= form.radio_button :fuel_type, 'Diesel' %><br>
+
+    <%= form.label :fuel_type,  "Hydrogen"%>
+    <%= form.radio_button :fuel_type, 'Hydrogen' %><br>
+
+    <%= form.label :fuel_type,  "Alcohol"%>
+    <%= form.radio_button :fuel_type, 'Alcohol' %><br>
+
+    <%= form.label :fuel_type,  "CNG"%>
+    <%= form.radio_button :fuel_type, 'C.N.G' %><br>
+
+    <%= form.label  :fuel_type,  "Electricity"%>
+    <%= form.radio_button :fuel_type, 'Electricity' %><br>
+    
+    <%#   %i[petrol diesel hydrogen alcohol cng].each do |key| %>
+    <%#= form.check_box :fuel_type, {multiple: true}, key, nil%>
+    <%#= form.label key %>
+    <%# end %>
   </div>
   
   <div>

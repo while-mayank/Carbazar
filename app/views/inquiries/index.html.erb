@@ -1,7 +1,11 @@
 <h1> Your Enquiries </h1>
-<% @inquiries.each do |inquiry|%>
-<p>Car: <%= Car.find_by(id: inquiry.car_id).model %></p>
-<p>Content: <%= inquiry.content%></p>
-<p>Buyers Number: <%= inquiry.number %></p>
-<hr>
+<% @cars.each do |car|%>
+	<% if car.inquiries.present? %>
+	<p>Car: <%= Car.find_by(id: car.id).model %></p>
+		<% car.inquiries.each do |inquiry| %>
+		<p>Content: <%= inquiry.content%></p>
+		<p>Buyers Number: <%= inquiry.number %></p>
+		<hr>
+		<% end %>
+	<% end %>
 <% end  %>

@@ -54,7 +54,7 @@ end
 
 private
 def car_params
-	params.require(:car).permit(:brand, :model, :price, :manufacture_year, images: [], :fuel_type => [])
+	params.require(:car).permit(:brand, :model, :price, :manufacture_year, :fuel_type, images: [])
 end
 
 def set_car
