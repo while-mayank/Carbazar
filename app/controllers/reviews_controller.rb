@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 	before_action :authenticate_user!
-before_action :set_review, only: %i[update destroy]
 
 def index
 	@reviews = Review.where(user_id: current_user.id)
@@ -17,6 +16,7 @@ def create
 end
 
 def destroy
+	@review = Review.find(params[:id])
 	if @review.destroy
 		@car = Car.find(params[:car_id])
 		redirect_to @car
@@ -28,7 +28,4 @@ def review_params
 	params.require(:review).permit!
 end
 
-def set_review
-	@review = Review.find(params[:id])
-end
 end

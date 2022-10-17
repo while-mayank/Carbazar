@@ -1,10 +1,9 @@
 class InquiriesController < ApplicationController
 before_action :authenticate_user!
-before_action :set_inquiry, only: %i[destroy]
 
 
 def index
-@inquiries = Inquiry.all
+@inquiries = current_user.cars.all
 end
 
 def new
@@ -21,9 +20,5 @@ end
 private
 def inquiry_params
   params.require(:inquiry).permit(:content, :number, :car_id)
-end
-
-def set_inquiry
-  @inquiry = Inquiry.find(params[:id])
 end
 end
