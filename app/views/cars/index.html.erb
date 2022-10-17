@@ -1,8 +1,8 @@
 <div class="container text-center" style="margin-right: 100px; margin-left: 100px;">
   <div class="row row-cols-4" style="width: 1600px;">
     <% @cars.each do |car|%>
-      <div class="col" style="margin-bottom: 20px; margin-top: 20px;">
-        <div class="card text-bg-light mb-3" style="width: 18rem;">
+      <div class="col" style="margin-bottom: 0.7rem; margin-top: 0.7rem;">
+        <div class="card text-bg-light mb-3" style="width: 290px;margin-top: 16px;margin-left: 42px;margin-right: 0rem;">
           <%= link_to(car)  do %>
           <% if car.images.attached?  %>
             <div class="col align-self-start" style="width: 18rem;">
@@ -22,3 +22,4 @@
     <% end %>
   </div>
 </div>
+

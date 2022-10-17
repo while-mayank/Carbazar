@@ -1,7 +1,12 @@
 <h1> Your Reviews </h1>
-<% @reviews.each do |review|%>
-<p>Model Name: <%= review.car.model%></p>
-<p>Description: <%= review.description %></p>
-<hr>
-<% end  %>
+<% @cars.each do |car|%>
+	<% if car.reviews.present? %>
+	<h6>Model Name: <%= car.model%></h6>
+		<% car.reviews.each do |review|%>
+			<p>User: <%= review.user.user_name %></p>
+			<p>description: <%= review.description %></p>
+		<% end %>
+	<% end %> 
+<% end %>
+
 

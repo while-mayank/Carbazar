@@ -2,11 +2,10 @@ class ReviewsController < ApplicationController
 	before_action :authenticate_user!
 
 def index
-	@reviews = Review.where(user_id: current_user.id)
+	@cars = Car.where(user_id: current_user.id)
 end
 
 def create
-	debugger
 	if @review = current_user.reviews.create(review_params)
 		@car  = @review.car
 		redirect_to car_url(@car), notice: "review was successfully created."
