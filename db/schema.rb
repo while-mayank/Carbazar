@@ -47,21 +47,12 @@ ActiveRecord::Schema.define(version: 2022_10_14_134148) do
     t.string "brand"
     t.string "model"
     t.integer "price"
+    t.string "fuel_type"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "manufacture_year", limit: 2
-    t.bigint "user_id", null: false
-    t.string "fuel_type"
     t.index ["user_id"], name: "index_cars_on_user_id"
-  end
-
-  create_table "enquiries", force: :cascade do |t|
-    t.string "content"
-    t.integer "contact_no"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_enquiries_on_user_id"
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -104,10 +95,10 @@ ActiveRecord::Schema.define(version: 2022_10_14_134148) do
 
   create_table "reviews", force: :cascade do |t|
     t.text "description"
+    t.bigint "user_id", null: false
     t.bigint "car_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.index ["car_id"], name: "index_reviews_on_car_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -130,7 +121,6 @@ ActiveRecord::Schema.define(version: 2022_10_14_134148) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cars", "users"
-  add_foreign_key "enquiries", "users"
   add_foreign_key "inquiries", "cars"
   add_foreign_key "likes", "users"
   add_foreign_key "profiles", "users"
