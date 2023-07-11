@@ -1,10 +1,10 @@
 # Change these
 server '65.1.232.136', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:while-mayank/Electronic-Hub.git'
-set :application,     'carbazar'
+set :repo_url,        'git@github.com:while-mayank/Carbazar.git'
+set :application,     'Carbazar'
 set :user,            'ubuntu'
-set :branch,          ' '
+set :branch,          'main'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
