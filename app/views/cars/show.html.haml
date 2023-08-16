@@ -1,0 +1,46 @@
+%div
+  - if @car.images.attached?
+    - @car.images.each do |image|
+      %div.col.align-self-start
+        = image_tag image, width: "300px", height: "210px"
+  - else
+    %p Please insert images.
+
+%p
+  %em Seller: #{@car.user.user_name}
+  %p Company: #{@car.brand}
+  %p Model: #{@car.model}
+  %p Price: #{@car.price}
+  %p Manufacture Year: #{@car.manufacture_year}
+  %p Fuel Variant: #{@car.fuel_type}
+
+.btn-group.btn-group-sm(role='group' arial-label="Basic mixed styles example")
+  - if Like.where(user: current_user.id, likeable_id: @car.id, like_type: true).present?
+    = link_to "👍🏻", likes_path(car_id: @car.id, like_type: true), method: :delete, class: "btn btn-secondary"
+  - else
+    = link_to "👍🏻", likes_path(car_id: @car.id, like_type: true), method: :post, class: "btn btn-outline-secondary"
+%em Likes Count #{@car.likes.where(like_type: true).count}
+
+.btn-group.btn-group-sm{role: "group", "arial-label": "Basic mixed styles example"}
+  - if Like.where(user: current_user.id, likeable_id: @car.id, like_type: false).present?
+    = link_to "👎🏻", likes_path(car_id: @car.id, like_type: false), method: :delete, class: "btn btn-secondary"
+  - else
+    = link_to "👎🏻", likes_path(car_id: @car.id, like_type: false), method: :post, class: "btn btn-outline-secondary"
+%em Unlikes Count #{@car.likes.where(like_type: false).count}
+
+- if current_user.id == @car.user_id
+  %ul 
+    %li
+      =link_to "Edit", edit_car_path(@car)
+    %li
+      =link_to "Destroy", car_path(@car), method: :delete, data: {confirm: "Are you sure?"}
+
+%h2 Reviews
+=render 'reviews/reviews'
+
+%h2 Add a review
+=render "reviews/form"
+
+-unless @car.user_id == current_user.id
+  %h2 Do you have any enquiries?
+  =link_to "Inquiry", new_inquiry_path(@car)

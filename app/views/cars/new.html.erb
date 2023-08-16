@@ -1,71 +1,72 @@
 <%= form_for @car do |form| %>
- <% if @car.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@car.errors.count, "error") %> Prohibited this Customer from being saved:</h2>
-
-    <ul>
-      <% @car.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %> 
-  </div class="form-check">
-  <%= form.label :brand%>
-  <%= form.select :brand, ['Tata', 'Mahindra','Force','Honda', 'Hyundai', 'Kia', 'MG']%><br>
-  <div>
-
-  <div class="field">
-    <%= form.label :model %>
-    <%= form.text_field :model %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :manufacture_year %>
-    <%= form.select :manufacture_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
-  </div>
-
-  <div class="form-check">
-    <%= form.label :fuel_type %> <br>
-
-    <%= form.label :fuel_type, "Petrol"%>
-    <%= form.radio_button :fuel_type, 'Petrol' %><br>
-
-    <%= form.label :fuel_type,  "Diesel"%>
-    <%= form.radio_button :fuel_type, 'Diesel' %><br>
-
-    <%= form.label :fuel_type,  "Hydrogen"%>
-    <%= form.radio_button :fuel_type, 'Hydrogen' %><br>
-
-    <%= form.label :fuel_type,  "Alcohol"%>
-    <%= form.radio_button :fuel_type, 'Alcohol' %><br>
-
-    <%= form.label :fuel_type,  "CNG"%>
-    <%= form.radio_button :fuel_type, 'C.N.G' %><br>
-
-    <%= form.label  :fuel_type,  "Electricity"%>
-    <%= form.radio_button :fuel_type, 'Electricity' %><br>
-    
-    <%#   %i[petrol diesel hydrogen alcohol cng].each do |key| %>
-    <%#= form.check_box :fuel_type, {multiple: true}, key, nil%>
-    <%#= form.label key %>
-    <%# end %>
-  </div>
-  
-  <div>
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Sell Car" %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back', profiles_path %>
+    <% if @car.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(@car.errors.count, "error") %> Prohibited this Customer from being saved:</h2>
+   
+       <ul>
+         <% @car.errors.each do |error| %>
+           <li><%= error.full_message %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %> 
+     </div class="form-check">
+     <%= form.label :brand%>
+     <%= form.select :brand, ['Tata', 'Mahindra','Force','Honda', 'Hyundai', 'Kia', 'MG']%><br>
+     <div>
+   
+     <div class="field">
+       <%= form.label :model %>
+       <%= form.text_field :model %>
+     </div>
+   
+     <div class="field">
+       <%= form.label :price %>
+       <%= form.number_field :price %>
+     </div>
+   
+     <div class="field">
+       <%= form.label :manufacture_year %>
+       <%= form.select :manufacture_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
+     </div>
+   
+     <div class="form-check">
+       <%= form.label :fuel_type %> <br>
+   
+       <%= form.label :fuel_type, "Petrol"%>
+       <%= form.radio_button :fuel_type, 'Petrol' %><br>
+   
+       <%= form.label :fuel_type,  "Diesel"%>
+       <%= form.radio_button :fuel_type, 'Diesel' %><br>
+   
+       <%= form.label :fuel_type,  "Hydrogen"%>
+       <%= form.radio_button :fuel_type, 'Hydrogen' %><br>
+   
+       <%= form.label :fuel_type,  "Alcohol"%>
+       <%= form.radio_button :fuel_type, 'Alcohol' %><br>
+   
+       <%= form.label :fuel_type,  "CNG"%>
+       <%= form.radio_button :fuel_type, 'C.N.G' %><br>
+   
+       <%= form.label  :fuel_type,  "Electricity"%>
+       <%= form.radio_button :fuel_type, 'Electricity' %><br>
+       
+       <%#   %i[petrol diesel hydrogen alcohol cng].each do |key| %>
+       <%#= form.check_box :fuel_type, {multiple: true}, key, nil%>
+       <%#= form.label key %>
+       <%# end %>
+     </div>
+     
+     <div>
+       <%= form.label :images %>
+       <%= form.file_field :images, multiple: true %>
+     </div>
+   
+     <div class="actions">
+       <%= form.submit "Sell Car" %>
+     </div>
+   
+   <% end %>
+   
+   <%= link_to 'Back', profiles_path %>
+   
